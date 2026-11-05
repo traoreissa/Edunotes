@@ -1,0 +1,18 @@
+<form id="f">
+  <input name="note" type="number" step="0.25" placeholder="Note"> 
+  <input name="coef" type="number" placeholder="Coef">
+  <button>Calculer</button>
+</form>
+<p id="res"></p>
+<script>
+document.getElementById("f").onsubmit = async (e) => {
+  e.preventDefault();
+  const d = new FormData(e.target);
+  const r = await fetch("/api/moyenne", { method: "POST", headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ notes: [{ note: +d.get("note"), coef: +d.get("coef") }] }) });
+  const j = await r.json();
+  document.getElementById("res").textContent = r.ok
+    ? j.moyenne + " / 20 : " + j.mention
+    : "Erreur : " + j.erreur;
+};
+</script>
