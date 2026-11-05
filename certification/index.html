@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MLCert Academy — Certification Machine Learning en ligne</title>
+  <meta name="description" content="Passez en ligne la certification Machine Learning Certified Professional (MLCP) : examen chronométré, score sur 1000 et rapport détaillé par domaine.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%233b3fc4'/%3E%3Ctext x='16' y='21' font-family='Arial' font-weight='700' font-size='13' fill='white' text-anchor='middle'%3EML%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-screen="home">
+  <a class="skip-link" href="#main">Aller au contenu</a>
+
+  <!-- En-tête du site (hors examen) -->
+  <header class="site-header no-print">
+    <div class="container header-inner">
+      <a class="logo" href="#" data-go="home">
+        <span class="logo-mark" aria-hidden="true">ML</span>
+        <span>MLCert <b>Academy</b></span>
+      </a>
+      <nav class="main-nav" aria-label="Navigation principale">
+        <a href="#format">Format</a>
+        <a href="#domaines">Domaines</a>
+        <a href="#deroulement">Déroulement</a>
+        <a href="#reglement">Règlement</a>
+      </nav>
+      <div class="a11y-tools" role="group" aria-label="Options d'affichage">
+        <button type="button" class="icon-btn" data-font="-1" aria-label="Réduire la taille du texte">A−</button>
+        <button type="button" class="icon-btn" data-font="1" aria-label="Agrandir la taille du texte">A+</button>
+        <button type="button" class="icon-btn" data-contrast aria-pressed="false" aria-label="Contraste élevé">◐</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Barre d'examen (pendant la composition) -->
+  <div class="exam-bar no-print">
+    <div class="container wide exam-bar-inner">
+      <div class="exam-title">
+        <span class="logo-mark sm" aria-hidden="true">ML</span>
+        <div>
+          <strong>MLCP-101 · Examen en cours</strong>
+          <span id="exam-candidate" class="exam-candidate"></span>
+        </div>
+      </div>
+      <div id="timer-box" class="timer" role="timer" aria-label="Temps restant">
+        <span aria-hidden="true">⏱</span> <span id="timer">--:--</span>
+      </div>
+      <div class="exam-actions">
+        <div class="a11y-tools" role="group" aria-label="Options d'affichage">
+          <button type="button" class="icon-btn light" data-font="-1" aria-label="Réduire la taille du texte">A−</button>
+          <button type="button" class="icon-btn light" data-font="1" aria-label="Agrandir la taille du texte">A+</button>
+          <button type="button" class="icon-btn light" data-contrast aria-pressed="false" aria-label="Contraste élevé">◐</button>
+        </div>
+        <button type="button" class="btn btn-light" id="btn-review">Revue et soumission</button>
+      </div>
+    </div>
+    <div class="progress" aria-hidden="true"><div id="progress-fill"></div></div>
+  </div>
+
+  <main id="main">
+
+    <!-- ===================== ACCUEIL ===================== -->
+    <section id="screen-home" class="screen" aria-labelledby="home-title">
+      <div class="hero">
+        <div class="container hero-grid">
+          <div>
+            <p class="eyebrow">Certification professionnelle · Niveau Associate</p>
+            <h1 id="home-title">Machine Learning Certified Professional</h1>
+            <p class="hero-lead">Validez vos compétences en apprentissage automatique avec un examen en ligne
+              conçu selon les standards des grands programmes de certification IT : banque de questions
+              validée, score mis à l'échelle sur 1000 points et rapport détaillé par domaine.</p>
+            <div class="hero-cta">
+              <button type="button" class="btn btn-accent btn-lg" data-go="register">S'inscrire à l'examen</button>
+              <a class="btn btn-outline-light btn-lg" href="#domaines">Voir le programme</a>
+            </div>
+            <p id="last-result" class="last-result" hidden>
+              Vous avez déjà composé : <button type="button" class="link-btn" id="btn-last-result">consulter votre dernier résultat</button>
+            </p>
+            <ul class="hero-facts">
+              <li><strong id="fact-q">30</strong><span>questions</span></li>
+              <li><strong id="fact-t">45 min</strong><span>chronométrées</span></li>
+              <li><strong>700</strong><span>points pour réussir</span></li>
+              <li><strong>1000</strong><span>score maximal</span></li>
+            </ul>
+          </div>
+          <div class="hero-visual" aria-hidden="true">
+            <div class="mock-report">
+              <div class="mock-head"><span class="logo-mark sm">ML</span><span>Rapport de score</span></div>
+              <div class="mock-score"><b>842</b><span>/ 1000</span></div>
+              <span class="badge pass">Réussi</span>
+              <div class="mock-bars">
+                <span style="--w:92%"></span><span style="--w:78%"></span><span style="--w:85%"></span><span style="--w:70%"></span><span style="--w:88%"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section id="format" class="section container" aria-labelledby="format-title">
+        <h2 id="format-title" class="section-title">Un format d'examen professionnel</h2>
+        <p class="section-lead">Les mêmes principes que les certifications IT reconnues, adaptés au Machine Learning.</p>
+        <div class="cards-4">
+          <article class="card feature">
+            <span class="feature-icon" aria-hidden="true">☰</span>
+            <h3>Questions variées</h3>
+            <p>Choix unique, choix multiples, vrai/faux, classement, association et études de cas.</p>
+          </article>
+          <article class="card feature">
+            <span class="feature-icon" aria-hidden="true">⚖</span>
+            <h3>Score mis à l'échelle</h3>
+            <p>Score de 100 à 1000, réussite à 700. Crédit partiel sur les questions d'association.</p>
+          </article>
+          <article class="card feature">
+            <span class="feature-icon" aria-hidden="true">🔒</span>
+            <h3>Notes à la fin</h3>
+            <p>Aucune correction pendant l'épreuve. Score, résultat et correction détaillée après la soumission.</p>
+          </article>
+          <article class="card feature">
+            <span class="feature-icon" aria-hidden="true">🎓</span>
+            <h3>Certificat vérifiable</h3>
+            <p>Identifiant unique de certification, valable 3 ans, imprimable en PDF.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="domaines" class="section alt" aria-labelledby="dom-title">
+        <div class="container">
+          <h2 id="dom-title" class="section-title">Domaines évalués</h2>
+          <p class="section-lead">La pondération indique la part de chaque domaine dans l'examen.</p>
+          <div id="domain-list" class="domain-list"></div>
+        </div>
+      </section>
+
+      <section id="deroulement" class="section container" aria-labelledby="steps-title">
+        <h2 id="steps-title" class="section-title">Déroulement de l'examen</h2>
+        <ol class="steps">
+          <li><span class="step-n">1</span><h3>Inscription</h3><p>Identité du candidat, acceptation du règlement et aménagements éventuels.</p></li>
+          <li><span class="step-n">2</span><h3>Vérification</h3><p>Contrôle automatique du navigateur, de l'écran et de la connexion.</p></li>
+          <li><span class="step-n">3</span><h3>Composition</h3><p>Examen chronométré, navigation libre, marquage des questions à revoir.</p></li>
+          <li><span class="step-n">4</span><h3>Résultat</h3><p>Score, détail par domaine, correction commentée et certificat.</p></li>
+        </ol>
+      </section>
+
+      <section id="reglement" class="section alt" aria-labelledby="rules-title">
+        <div class="container">
+          <h2 id="rules-title" class="section-title">Règlement et bonnes pratiques</h2>
+          <div class="cards-3">
+            <article class="card">
+              <h3>Avant l'examen</h3>
+              <ul class="check-list">
+                <li>Installez-vous dans une pièce calme et bien éclairée.</li>
+                <li>Utilisez un navigateur récent et une connexion stable.</li>
+                <li>Fermez les autres onglets et applications.</li>
+                <li>Demandez un aménagement (+25 % de temps) si vous y avez droit.</li>
+              </ul>
+            </article>
+            <article class="card">
+              <h3>Pendant l'examen</h3>
+              <ul class="check-list">
+                <li>Le chronomètre continue même si vous rechargez la page.</li>
+                <li>Vos réponses sont enregistrées automatiquement.</li>
+                <li>Marquez les questions à revoir et utilisez l'écran de revue.</li>
+                <li>À la fin du temps, l'examen est soumis automatiquement.</li>
+              </ul>
+            </article>
+            <article class="card">
+              <h3>Intégrité</h3>
+              <ul class="check-list">
+                <li>Documents, assistance et outils d'IA ne sont pas autorisés.</li>
+                <li>Les sorties de la fenêtre d'examen sont détectées et consignées.</li>
+                <li>Le copier-coller est désactivé pendant la composition.</li>
+                <li>Les questions sont confidentielles et ne doivent pas être divulguées.</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <footer class="site-footer">
+        <div class="container footer-inner">
+          <span>© 2026 MLCert Academy — Plateforme de démonstration</span>
+          <span>Accessibilité · Confidentialité · Règlement de l'examen</span>
+        </div>
+      </footer>
+    </section>
+
+    <!-- ===================== INSCRIPTION ===================== -->
+    <section id="screen-register" class="screen" hidden aria-labelledby="reg-title">
+      <div class="container narrow section">
+        <button type="button" class="link-btn back" data-go="home">← Retour à l'accueil</button>
+        <h1 id="reg-title" class="page-title">Inscription à l'examen MLCP-101</h1>
+        <div class="reg-grid">
+          <form id="reg-form" class="card form" novalidate>
+            <h2 class="h-sm">Identité du candidat</h2>
+            <div class="field">
+              <label for="f-name">Nom complet</label>
+              <input id="f-name" name="name" type="text" autocomplete="name" required minlength="3" aria-describedby="e-name">
+              <p id="e-name" class="field-error" hidden>Saisissez votre nom complet (3 caractères minimum).</p>
+            </div>
+            <div class="field">
+              <label for="f-email">Adresse e-mail</label>
+              <input id="f-email" name="email" type="email" autocomplete="email" required aria-describedby="e-email">
+              <p id="e-email" class="field-error" hidden>Saisissez une adresse e-mail valide.</p>
+            </div>
+
+            <h2 class="h-sm">Aménagements</h2>
+            <label class="check">
+              <input type="checkbox" name="extraTime">
+              <span>J'ai droit à un temps supplémentaire (+25 %)</span>
+            </label>
+
+            <h2 class="h-sm">Règlement</h2>
+            <div class="rules-box">
+              <p>En commençant l'examen, je m'engage à :</p>
+              <ul>
+                <li>composer seul, sans document ni outil d'assistance ;</li>
+                <li>ne pas quitter la fenêtre de l'examen ;</li>
+                <li>ne pas copier ni divulguer les questions.</li>
+              </ul>
+            </div>
+            <label class="check">
+              <input type="checkbox" name="rules" required aria-describedby="e-rules">
+              <span>J'ai lu et j'accepte le règlement de l'examen.</span>
+            </label>
+            <p id="e-rules" class="field-error" hidden>Vous devez accepter le règlement pour commencer.</p>
+
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Commencer l'examen</button>
+          </form>
+
+          <aside class="card">
+            <h2 class="h-sm">Vérification du système</h2>
+            <ul id="sys-check" class="sys-check"></ul>
+            <h2 class="h-sm">Récapitulatif</h2>
+            <dl class="recap">
+              <div><dt>Examen</dt><dd>MLCP-101</dd></div>
+              <div><dt>Questions</dt><dd id="recap-q">30</dd></div>
+              <div><dt>Durée</dt><dd id="recap-t">45 minutes</dd></div>
+              <div><dt>Seuil de réussite</dt><dd>700 / 1000</dd></div>
+              <div><dt>Langue</dt><dd>Français</dd></div>
+            </dl>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== EXAMEN ===================== -->
+    <section id="screen-exam" class="screen" hidden aria-label="Examen">
+      <div id="integrity-banner" class="banner warn" role="alert" hidden></div>
+      <div class="container wide exam-layout">
+        <div class="card q-card">
+          <div class="q-head">
+            <span id="q-meta" class="q-meta"></span>
+            <button type="button" id="btn-flag" class="btn btn-ghost sm" aria-pressed="false">⚑ Marquer pour révision</button>
+          </div>
+          <div id="q-body" class="q-body"></div>
+          <div class="q-foot">
+            <button type="button" id="btn-prev" class="btn btn-ghost">← Précédente</button>
+            <span class="kbd-hint">Raccourcis : <kbd>A</kbd>–<kbd>D</kbd> répondre · <kbd>N</kbd>/<kbd>P</kbd> naviguer · <kbd>F</kbd> marquer</span>
+            <button type="button" id="btn-next" class="btn btn-primary">Suivante →</button>
+          </div>
+        </div>
+        <aside class="card nav-card" aria-labelledby="nav-title">
+          <h2 id="nav-title" class="h-sm">Navigation</h2>
+          <div id="nav-grid" class="nav-grid"></div>
+          <ul class="legend">
+            <li><span class="dot answered"></span>Répondue</li>
+            <li><span class="dot"></span>Non répondue</li>
+            <li><span class="dot flagged"></span>Marquée</li>
+          </ul>
+          <p id="nav-summary" class="nav-summary"></p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ===================== REVUE ===================== -->
+    <section id="screen-review" class="screen" hidden aria-labelledby="rev-title">
+      <div class="container narrow section">
+        <h1 id="rev-title" class="page-title">Revue avant soumission</h1>
+        <p class="lead">Vérifiez vos réponses. Après la soumission, vous ne pourrez plus les modifier.</p>
+        <div id="review-stats" class="stats-row"></div>
+        <div class="filters" role="group" aria-label="Filtrer les questions">
+          <button type="button" class="chip active" data-rfilter="all">Toutes</button>
+          <button type="button" class="chip" data-rfilter="unanswered">Non répondues</button>
+          <button type="button" class="chip" data-rfilter="flagged">Marquées</button>
+        </div>
+        <ul id="review-list" class="review-list"></ul>
+        <div class="actions">
+          <button type="button" id="btn-back-exam" class="btn btn-ghost">← Retour à l'examen</button>
+          <button type="button" id="btn-submit" class="btn btn-primary btn-lg">Terminer et soumettre</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== RÉSULTATS ===================== -->
+    <section id="screen-result" class="screen" hidden aria-labelledby="res-title">
+      <div class="container section">
+        <div class="card result-hero">
+          <div class="gauge">
+            <svg viewBox="0 0 120 120" role="img" aria-labelledby="gauge-label">
+              <circle class="gauge-track" cx="60" cy="60" r="52"></circle>
+              <circle id="gauge-fill" class="gauge-fill" cx="60" cy="60" r="52"></circle>
+            </svg>
+            <div class="gauge-text" id="gauge-label"><b id="res-score">0</b><span>/ 1000</span></div>
+          </div>
+          <div class="result-main">
+            <span id="res-badge" class="badge"></span>
+            <h1 id="res-title" class="page-title"></h1>
+            <p id="res-msg" class="lead"></p>
+            <dl id="res-meta" class="meta-grid"></dl>
+            <div class="actions no-print">
+              <button type="button" id="btn-print-report" class="btn btn-ghost">Imprimer le rapport</button>
+              <button type="button" id="btn-print-cert" class="btn btn-accent" hidden>Télécharger le certificat</button>
+              <button type="button" id="btn-retake" class="btn btn-primary">Nouvelle tentative</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="result-grid">
+          <section class="card" aria-labelledby="rd-title">
+            <h2 id="rd-title" class="h-sm">Performance par domaine</h2>
+            <div id="res-domains" class="res-domains"></div>
+            <p class="muted small">Repère : 70 % et plus = domaine maîtrisé.</p>
+          </section>
+          <section class="card" aria-labelledby="rs-title">
+            <h2 id="rs-title" class="h-sm">Synthèse</h2>
+            <div id="res-summary" class="stats-row compact"></div>
+            <h3 class="h-xs">Recommandations</h3>
+            <ul id="res-reco" class="check-list"></ul>
+          </section>
+        </div>
+
+        <div id="certificate-wrap" hidden>
+          <div id="certificate" class="certificate">
+            <div class="cert-inner">
+              <div class="cert-logo"><span class="logo-mark" aria-hidden="true">ML</span> MLCert Academy</div>
+              <p class="cert-kicker">Certificat de réussite</p>
+              <p class="cert-small">Ce certificat atteste que</p>
+              <p id="cert-name" class="cert-name"></p>
+              <p class="cert-small">a réussi l'examen</p>
+              <p class="cert-title">Machine Learning Certified Professional</p>
+              <div class="cert-meta">
+                <div><span>Score</span><b id="cert-score"></b></div>
+                <div><span>Date</span><b id="cert-date"></b></div>
+                <div><span>Valable jusqu'au</span><b id="cert-valid"></b></div>
+                <div><span>Identifiant</span><b id="cert-id"></b></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <section class="card" aria-labelledby="det-title">
+          <div class="det-head">
+            <h2 id="det-title" class="h-sm">Correction détaillée</h2>
+            <div class="filters no-print" role="group" aria-label="Filtrer la correction">
+              <button type="button" class="chip active" data-dfilter="all">Toutes</button>
+              <button type="button" class="chip" data-dfilter="wrong">À revoir</button>
+              <button type="button" class="chip" data-dfilter="right">Correctes</button>
+            </div>
+          </div>
+          <ol id="res-details" class="details"></ol>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="modal" aria-labelledby="modal-title" aria-describedby="modal-text">
+    <form method="dialog">
+      <h2 id="modal-title"></h2>
+      <p id="modal-text"></p>
+      <div class="actions">
+        <button value="cancel" class="btn btn-ghost">Annuler</button>
+        <button value="ok" id="modal-ok" class="btn btn-primary">Confirmer</button>
+      </div>
+    </form>
+  </dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="questions.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
